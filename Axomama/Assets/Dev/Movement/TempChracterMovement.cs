@@ -44,7 +44,6 @@ public class TempChracterMovement : MonoBehaviour
        
        private void movePlayer(InputAction.CallbackContext context)
        {
-           Debug.Log("Hit test");
            Vector2 direction = context.ReadValue<Vector2>();
            setMovementInput(direction);
        }
