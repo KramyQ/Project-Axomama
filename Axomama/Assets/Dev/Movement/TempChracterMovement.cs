@@ -15,7 +15,8 @@ public class TempChracterMovement : MonoBehaviour
     private Vector3 currentMovement;
     private bool isMovementPressed;
     private Rigidbody rigidbody;
-    public float maxSpeed = 100f;
+    public float maxSpeed = 10f;
+    public float rotationSpeed = 10f;
 
     private void Awake()
        {
@@ -66,7 +67,14 @@ public class TempChracterMovement : MonoBehaviour
                rigidbody.velocity = new Vector3(0, 0, 0);
            }
 
-           Debug.Log(rigidbody.velocity);
+           Vector3 velocityDirection = rigidbody.velocity;
+
+           if (rigidbody.velocity.magnitude > 0.1f)
+           {
+               Quaternion dirQ = Quaternion.LookRotation (velocityDirection);
+               Quaternion slerp = Quaternion.Slerp (transform.rotation, dirQ, velocityDirection.magnitude * rotationSpeed * Time.deltaTime);
+               rigidbody.MoveRotation(slerp);
+           }
        }
 
 }
