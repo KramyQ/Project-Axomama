@@ -18,6 +18,7 @@ public class TempChracterMovement : NetworkBehaviour
     private Rigidbody rigidbody;
     public float maxSpeed = 10f;
     public float rotationSpeed = 10f;
+    public float jumpForce = 50;
 
     private void Awake()
        {
@@ -38,6 +39,7 @@ public class TempChracterMovement : NetworkBehaviour
        {
            m_playerInputActions.PlayerMovement.Move.performed += setMovementInput;
            m_playerInputActions.PlayerMovement.Move.canceled += setMovementInput;
+           m_playerInputActions.PlayerMovement.Jump.performed += jump;
            rigidbody = GetComponent<Rigidbody>();
            currentMovement.x = 0;
            currentMovement.y = 0;
@@ -52,27 +54,38 @@ public class TempChracterMovement : NetworkBehaviour
            isMovementPressed = direction.x != 0 || direction.y != 0;
        }
 
+       private void jump(InputAction.CallbackContext _)
+       {
+           rigidbody.AddForce(new Vector3(0, jumpForce, 0));
+        }
+
        private void Move()
        {
-           if (isMovementPressed)
+           if (IsLocalPlayer && IsOwner)
            {
-               rigidbody.velocity = new Vector3 (currentMovement.x * maxSpeed, rigidbody.velocity.y, currentMovement.z * maxSpeed);
-           }
-           else
-           {
-               rigidbody.velocity = new Vector3(0, 0, 0);
-           }
+               if (isMovementPressed)
+               {
+                   rigidbody.velocity = new Vector3 (currentMovement.x * maxSpeed, rigidbody.velocity.y, currentMovement.z * maxSpeed);
+               }
+               else
+               {
+                   Vector3 nullVector = new Vector3(0, rigidbody.velocity.y, 0);
+                   rigidbody.velocity = nullVector;
+               }
 
-           Vector3 velocityDirection = rigidbody.velocity;
+               Vector3 velocityDirection = rigidbody.velocity;
+               Vector3 speedForce = velocityDirection;
+               speedForce.y = 0;
 
-           if (rigidbody.velocity.magnitude > 0.1f)
-           {
-               Quaternion dirQ = Quaternion.LookRotation (velocityDirection);
-               rigidbody.angularVelocity = new Vector3(0, 0, 0);
-               Quaternion slerp = Quaternion.Slerp (transform.rotation, dirQ, velocityDirection.magnitude * rotationSpeed * Time.deltaTime);
-               rigidbody.MoveRotation(slerp);
+               if (speedForce.magnitude > 0.1f)
+               {
+                   Quaternion dirQ = Quaternion.LookRotation(velocityDirection);
+                   rigidbody.angularVelocity = new Vector3(0, 0, 0);
+                   Quaternion slerp = Quaternion.Slerp (transform.rotation, dirQ, velocityDirection.magnitude * rotationSpeed * Time.deltaTime);
+                   rigidbody.MoveRotation(Quaternion.Euler(0,slerp.eulerAngles.y,0));
+               }
+
            }
-           
        }
 
 
