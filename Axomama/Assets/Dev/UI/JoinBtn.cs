@@ -27,7 +27,7 @@ public class JoinBtn : MonoBehaviour
         //     ipAdressBox.text,  // The IP address is a string
         //     (ushort)7777 // The port number is an unsigned short
         // );
-        console.SetActive(true);
+        // console.SetActive(true);
         mainCam.enabled = false;
         mainmenu.enabled = false;
         NetworkManager.Singleton.StartClient();

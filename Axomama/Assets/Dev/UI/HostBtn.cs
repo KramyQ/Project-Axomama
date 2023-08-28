@@ -22,7 +22,7 @@ public class HostBtn : MonoBehaviour
 
     void TaskOnClick()
     {
-        console.SetActive(true);
+        // console.SetActive(true);
         mainCam.enabled = false;
         mainmenu.enabled = false;
         NetworkManager.Singleton.StartHost();

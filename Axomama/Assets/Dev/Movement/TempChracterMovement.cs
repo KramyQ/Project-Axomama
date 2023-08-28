@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TempChracterMovement : MonoBehaviour
+public class TempChracterMovement : NetworkBehaviour
 {
     
     [SerializeField]
@@ -35,28 +36,23 @@ public class TempChracterMovement : MonoBehaviour
        
        private void Start()
        {
-           m_playerInputActions.PlayerMovement.Move.performed += movePlayer;
-           m_playerInputActions.PlayerMovement.Move.canceled += movePlayer;
+           m_playerInputActions.PlayerMovement.Move.performed += setMovementInput;
+           m_playerInputActions.PlayerMovement.Move.canceled += setMovementInput;
            rigidbody = GetComponent<Rigidbody>();
            currentMovement.x = 0;
            currentMovement.y = 0;
            currentMovement.z = 0;
        }
        
-       private void movePlayer(InputAction.CallbackContext context)
+       private void setMovementInput(InputAction.CallbackContext context)
        {
            Vector2 direction = context.ReadValue<Vector2>();
-           setMovementInput(direction);
+           currentMovement.x = direction.x;
+           currentMovement.z = direction.y;
+           isMovementPressed = direction.x != 0 || direction.y != 0;
        }
-       
-       public void setMovementInput(Vector2 currentMovementInput)
-       {
-           currentMovement.x = currentMovementInput.x;
-           currentMovement.z = currentMovementInput.y;
-           isMovementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
-       }
-       
-       private void Update()
+
+       private void Move()
        {
            if (isMovementPressed)
            {
@@ -72,9 +68,18 @@ public class TempChracterMovement : MonoBehaviour
            if (rigidbody.velocity.magnitude > 0.1f)
            {
                Quaternion dirQ = Quaternion.LookRotation (velocityDirection);
+               rigidbody.angularVelocity = new Vector3(0, 0, 0);
                Quaternion slerp = Quaternion.Slerp (transform.rotation, dirQ, velocityDirection.magnitude * rotationSpeed * Time.deltaTime);
                rigidbody.MoveRotation(slerp);
            }
+           
+       }
+
+
+
+       private void Update()
+       {
+           Move();
        }
 
 }
