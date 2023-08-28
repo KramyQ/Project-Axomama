@@ -44,6 +44,7 @@ public class TempChracterMovement : NetworkBehaviour
            currentMovement.x = 0;
            currentMovement.y = 0;
            currentMovement.z = 0;
+           rigidbody.maxLinearVelocity = 5;
        }
        
        private void setMovementInput(InputAction.CallbackContext context)
@@ -63,34 +64,34 @@ public class TempChracterMovement : NetworkBehaviour
        {
            if (IsLocalPlayer && IsOwner)
            {
-               if (isMovementPressed)
-               {
-                   rigidbody.velocity = new Vector3 (currentMovement.x * maxSpeed, rigidbody.velocity.y, currentMovement.z * maxSpeed);
-               }
+               if (isMovementPressed){
+                   
+                   // rigidbody.velocity = new Vector3 (currentMovement.x * maxSpeed, rigidbody.velocity.y, currentMovement.z * maxSpeed);
+                   rigidbody.AddForce(new Vector3(currentMovement.x * maxSpeed, 0, currentMovement.z * maxSpeed));
+           }
                else
-               {
-                   Vector3 nullVector = new Vector3(0, rigidbody.velocity.y, 0);
-                   rigidbody.velocity = nullVector;
-               }
+           {
+               Vector3 nullVector = new Vector3(0, rigidbody.velocity.y, 0);
+               rigidbody.velocity = nullVector;
+           }
 
-               Vector3 velocityDirection = rigidbody.velocity;
-               Vector3 speedForce = velocityDirection;
-               speedForce.y = 0;
+           Vector3 velocityDirection = rigidbody.velocity;
+           Vector3 speedForce = velocityDirection;
+           speedForce.y = 0;
 
-               if (speedForce.magnitude > 0.1f)
-               {
-                   Quaternion dirQ = Quaternion.LookRotation(velocityDirection);
-                   rigidbody.angularVelocity = new Vector3(0, 0, 0);
-                   Quaternion slerp = Quaternion.Slerp (transform.rotation, dirQ, velocityDirection.magnitude * rotationSpeed * Time.deltaTime);
-                   rigidbody.MoveRotation(Quaternion.Euler(0,slerp.eulerAngles.y,0));
-               }
-
+           if (speedForce.magnitude > 0.1f)
+           {
+               Quaternion dirQ = Quaternion.LookRotation(velocityDirection);
+               rigidbody.angularVelocity = new Vector3(0, 0, 0);
+               Quaternion slerp = Quaternion.Slerp(transform.rotation, dirQ,
+                   velocityDirection.magnitude * rotationSpeed * Time.deltaTime);
+               rigidbody.MoveRotation(Quaternion.Euler(0, slerp.eulerAngles.y, 0));
+           }
            }
        }
 
 
-
-       private void Update()
+private void Update()
        {
            Move();
        }
