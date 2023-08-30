@@ -151,6 +151,19 @@ public class V3Movement : NetworkBehaviour
             if (hitBody)
             {
                 otherVel = hitBody.velocity;
+                if (grounded)
+                {
+                    // Calculate the player's position relative to the platform's center
+                    Vector2 projectedRelativePosition = new Vector2(transform.position.x, transform.position.z) - new Vector2(hitBody.position.x, hitBody.position.z);
+
+                    Vector2 projectedAngularVelocity = new Vector2(0, hitBody.angularVelocity.y);
+                    
+                    // Calculate the tangential velocity
+                    Vector2 tangentialVelocity = Vector3.Cross(projectedAngularVelocity * Vector3.forward, projectedRelativePosition);
+                    Vector3 projectedtangentialVelocity = new Vector3(tangentialVelocity.x, 0, tangentialVelocity.y);
+                    // Apply the tangential velocity to the player's rigidbody
+                    _rb.velocity = _rb.velocity+projectedtangentialVelocity;
+                }
             }
 
             float rayDirVel = Vector3.Dot(rayDir, currentVel);
