@@ -27,7 +27,7 @@ public class CharacterUpperbodyLayerBehaviour : StateMachineBehaviour
         if (stateInfo.IsName("Land"))
         {
             DOVirtual.Float(
-                1f, 
+                animator.GetLayerWeight(layerIndex), 
                 0f, 
                 0.4f, 
                 value => animator.SetLayerWeight(layerIndex, value));
