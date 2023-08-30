@@ -497,7 +497,7 @@ MonoBehaviour:
   groundDistance: 1
   hoverSpringStrength: 5
   JumpForce: 1000
-  rotationSpeed: 10
+  rotationSpeed: 2
   ForceScale: {x: 1, y: 0, z: 1}
   maxSpeed: 6
   speedFactor: 1
