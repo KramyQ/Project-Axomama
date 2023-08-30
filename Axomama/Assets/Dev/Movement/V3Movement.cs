@@ -16,6 +16,7 @@ public class V3Movement : NetworkBehaviour
     public float hoverSpringStrength = 10;
     public float JumpForce = 10;
     public float rotationSpeed = 10;
+    public float airControl = 0.5f;
 
     public Vector3 ForceScale = new Vector3(1, 0, 1);
 
@@ -93,9 +94,10 @@ public class V3Movement : NetworkBehaviour
     private void move()
     {
         float accel = acceleration * accelFactor;
-        
-        Vector3 goalVelocityVector = maxSpeed*speedFactor*currentMovement;
-        
+        float airControlMultiplier = 1;
+        if (!grounded) airControlMultiplier=airControl;
+        Vector3 goalVelocityVector = airControlMultiplier * maxSpeed*speedFactor*currentMovement;
+
         m_goalVelocity = Vector3.MoveTowards(m_goalVelocity, goalVelocityVector + groundVelocity,
             accel * Time.fixedDeltaTime);
 

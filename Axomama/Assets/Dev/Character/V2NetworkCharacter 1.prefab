@@ -498,13 +498,16 @@ MonoBehaviour:
   hoverSpringStrength: 5
   JumpForce: 1000
   rotationSpeed: 2
+  airControl: 0.9
   ForceScale: {x: 1, y: 0, z: 1}
-  maxSpeed: 6
+  maxSpeed: 5
   speedFactor: 1
   acceleration: 50
   maxAccelForce: 200
   gravityIncrease: 60
   _rb: {fileID: 8347270908764603582}
+  wantsToJump: 0
+  grounded: 1
   isMovementPressed: 0
 --- !u!1 &7299075481216001352
 GameObject:

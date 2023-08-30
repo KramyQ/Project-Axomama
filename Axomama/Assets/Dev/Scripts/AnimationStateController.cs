@@ -25,7 +25,7 @@ public class AnimationStateController : MonoBehaviour
             animator.SetTrigger("Jump");
         }
 
-        float speedRatio = movementClass._rb.velocity.magnitude /5.18f;
+        float speedRatio = movementClass._rb.velocity.magnitude /4.18f;
         animator.SetFloat("Forward", speedRatio);
         
         
