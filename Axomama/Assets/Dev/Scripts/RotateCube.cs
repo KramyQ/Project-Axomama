@@ -9,6 +9,6 @@ public class RotateCube : MonoBehaviour
 
     void FixedUpdate()
     {
-        platform_rb.angularVelocity = new Vector3(0, rotateSpeed, 0);
+        
     }
 }
