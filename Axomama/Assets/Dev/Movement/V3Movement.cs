@@ -29,19 +29,19 @@ public class V3Movement : NetworkBehaviour
     public float gravityIncrease = 10;
     
     // PHYSICS
-    [SerializeField] private Rigidbody _rb;
+    [SerializeField] public Rigidbody _rb;
     private RaycastHit _rayHit;
     private bool _rayDidHit;
     private bool inJump = false;
-    private bool wantsToJump = false;
-    private bool grounded = true;
+    public bool wantsToJump = false;
+    public bool grounded = true;
 
     private Vector3 m_goalVelocity = new Vector3(0,0,0);
     
     // INPUTS
     private TemporaryInputs m_playerInputActions;
     private Vector3 currentMovement;
-    private bool isMovementPressed;
+    public bool isMovementPressed;
     
     private void Awake()
     {
