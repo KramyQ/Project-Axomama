@@ -406,9 +406,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3628854690614391659}
+  _rb: {fileID: 8347270908764603582}
   cameraHolder: {fileID: 6439424211400432384}
   cameraHeight: 10
   offset: 5
+  predictionDistance: 1
   Velocity: {x: 0, y: 0, z: 0}
   SmoothTime: 0.3
 --- !u!114 &2370465733721196011
