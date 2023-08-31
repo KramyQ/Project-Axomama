@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,34 @@ public class AnimationStateController : MonoBehaviour
 
     [SerializeField]
     private V3Movement movementClass;
+
+    private void OnEnable()
+    {
+        V3Movement.onCharacterJump += playJumpVFX;
+        V3Movement.onCharacterLand += playLandVFX;
+    }
+
+    private void OnDisable()
+    {
+        V3Movement.onCharacterJump -= playJumpVFX;
+        V3Movement.onCharacterLand -= playLandVFX;
+    }
+
+    private void playLandVFX()
+    {
+        // Debug.Log("landed");
+    }
     
-    
+    private void playJumpVFX()
+    {
+        // Debug.Log("jumped");
+    }
+
+
     void Start()
     {
         animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame

@@ -10,6 +10,10 @@ using UnityEngine.Rendering;
 
 public class V3Movement : NetworkBehaviour
 {
+    public delegate void OnCharacterLand();
+    public static OnCharacterLand onCharacterLand;
+    public delegate void OnCharacterJump();
+    public static OnCharacterJump onCharacterJump;
     // SETUP PARAMS
     public float hoverHeight = 10;
     public float characterOffset = 1;
@@ -119,6 +123,10 @@ public class V3Movement : NetworkBehaviour
         if (wantsToJump && grounded)
         {
             _rb.AddForce(new Vector3(0,JumpForce, 0));
+            if (onCharacterJump != null)
+            {
+                onCharacterJump();
+            }
             inJump = true;
             wantsToJump = false;
         }
@@ -144,7 +152,15 @@ public class V3Movement : NetworkBehaviour
             50);
         if (_rayDidHit )
         {
+            bool formerGrounder = grounded;
             grounded = _rayHit.distance < groundDistance;
+            if (grounded && formerGrounder != grounded)
+            {
+                if (onCharacterLand != null)
+                {
+                    onCharacterLand();
+                }
+            }
         }
     }
 
