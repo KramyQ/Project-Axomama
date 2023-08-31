@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AnimationStateController : MonoBehaviour
 {
@@ -10,16 +11,21 @@ public class AnimationStateController : MonoBehaviour
     [SerializeField]
     private V3Movement movementClass;
 
+    public UnityEvent onStopMovingJumpEvent;
+    public UnityEvent onStartMovingJumpEvent;
+    public UnityEvent onCharacterJumpEvent;
+    public UnityEvent onCharacterLandEvent;
+
     private void OnEnable()
     {
-        V3Movement.onCharacterJump += playJumpVFX;
-        V3Movement.onCharacterLand += playLandVFX;
+        V3Movement.onCharacterJump += onCharacterJumpEvent.Invoke;
+        V3Movement.onCharacterLand += onCharacterLandEvent.Invoke;
     }
 
     private void OnDisable()
     {
-        V3Movement.onCharacterJump -= playJumpVFX;
-        V3Movement.onCharacterLand -= playLandVFX;
+        V3Movement.onCharacterJump -= onCharacterJumpEvent.Invoke;
+        V3Movement.onCharacterLand -= onCharacterLandEvent.Invoke;
     }
 
     private void playLandVFX()
