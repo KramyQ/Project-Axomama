@@ -34,8 +34,17 @@ public class CameraController : NetworkBehaviour
             float projectedVelocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z).magnitude;
             float movementOffset = (projectedVelocity / 4.19f) * movementOffsetForce;
             float movementHeight = (projectedVelocity / 4.19f) * movementHeightForce;
-            Vector3 predictedPlayerPosition = _rb.position + _rb.transform.forward.normalized * predictionDistance;
-            Vector3 targetPosition = player.position + Vector3.up * (cameraHeight+movementHeight) + Vector3.back * (offset+movementOffset);
+            Vector3 predictedPlayerPosition;
+            if (projectedVelocity > 0.1)
+            {
+                predictedPlayerPosition = _rb.position + _rb.transform.forward.normalized * predictionDistance;
+            }
+            else
+            {
+                predictedPlayerPosition = _rb.position;
+            }
+          
+            Vector3 targetPosition = predictedPlayerPosition + Vector3.up * (cameraHeight+movementHeight) + Vector3.back * (offset+movementOffset);
             cameraHolder.transform.position = Vector3.SmoothDamp( cameraHolder.transform.position, targetPosition, ref Velocity, SmoothTime);
         }
     }

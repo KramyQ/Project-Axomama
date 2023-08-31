@@ -410,6 +410,8 @@ MonoBehaviour:
   cameraHolder: {fileID: 6439424211400432384}
   cameraHeight: 10
   offset: 5
+  movementOffsetForce: 1
+  movementHeightForce: 1
   predictionDistance: 1
   Velocity: {x: 0, y: 0, z: 0}
   SmoothTime: 0.3
