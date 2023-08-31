@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 702759fb463bcb343ad02b4b2eb421fe,
         type: 3}
       propertyPath: m_Name
-      value: Tile_Base
+      value: Tile_2x2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -76,6 +76,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 987712898237358837}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 702759fb463bcb343ad02b4b2eb421fe,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8934993675990477825}
   m_SourcePrefab: {fileID: 100100000, guid: 702759fb463bcb343ad02b4b2eb421fe, type: 3}
 --- !u!1 &3484589260510736804 stripped
 GameObject:
@@ -104,3 +108,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 0.5, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8934993675990477825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484589260510736804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6757b231cedd544c583ef8aeaf773b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thickness: 0
+  material: {fileID: 11400000, guid: f7532232f07594be3a36470e25b47b4f, type: 2}
+  filter: -65535
+  m_SourceCollider: {fileID: 987712898237358837}
+  m_DistanceField: {fileID: 0}

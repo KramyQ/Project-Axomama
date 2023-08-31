@@ -18,19 +18,18 @@ public class AnimationStateController : MonoBehaviour
 
     private void OnEnable()
     {
-        V3Movement.onCharacterStartMoving += playStartMovingVFX;
-        V3Movement.onCharacterStopMoving += playStopMovingVFX;
+        V3Movement.onCharacterStartMoving += onStartMovingJumpEvent.Invoke;
+        V3Movement.onCharacterStopMoving += onStopMovingJumpEvent.Invoke;
         V3Movement.onCharacterJump += onCharacterJumpEvent.Invoke;
         V3Movement.onCharacterLand += onCharacterLandEvent.Invoke;
     }
 
     private void OnDisable()
     {
+        V3Movement.onCharacterStartMoving -= onStartMovingJumpEvent.Invoke;
+        V3Movement.onCharacterStopMoving -= onStopMovingJumpEvent.Invoke;
         V3Movement.onCharacterJump -= onCharacterJumpEvent.Invoke;
         V3Movement.onCharacterLand -= onCharacterLandEvent.Invoke;
-        V3Movement.onCharacterStartMoving -= playStartMovingVFX;
-        V3Movement.onCharacterStopMoving -= playStopMovingVFX;
-        
     }
     
     private void playStartMovingVFX()
