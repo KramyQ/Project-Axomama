@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Obi;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class V3Movement : NetworkBehaviour
     public float rotationSpeed = 10;
     public float airControl = 0.5f;
     public bool canGlide = false;
+    public float ropeThrowForce = 300f;
 
     public Vector3 ForceScale = new Vector3(1, 0, 1);
 
@@ -45,6 +47,9 @@ public class V3Movement : NetworkBehaviour
     private Vector3 currentMovement;
     public bool isMovementPressed;
     
+    
+    public GameObject lassoPrefab;
+    
     private void Awake()
     {
         m_playerInputActions = new TemporaryInputs();
@@ -66,6 +71,7 @@ public class V3Movement : NetworkBehaviour
         m_playerInputActions.PlayerMovement.Move.canceled += setMovementInput;
         m_playerInputActions.PlayerMovement.Jump.performed += jumpInputed;
         m_playerInputActions.PlayerMovement.Jump.canceled += jumpInputed;
+        m_playerInputActions.PlayerMovement.LassoTest.performed += lasso;
         currentMovement.x = 0;
         currentMovement.y = 0;
         currentMovement.z = 0;
@@ -202,5 +208,18 @@ public class V3Movement : NetworkBehaviour
         move();
         applyFallingForces();
         addSrpingForces();
+    }
+
+    private void lasso(InputAction.CallbackContext context)
+    {
+        Vector3 spawnPoint = _rb.position - transform.forward * 3;
+        spawnPoint.y = spawnPoint.y - 2;
+        GameObject newLasso = Instantiate(lassoPrefab, spawnPoint, transform.rotation);
+        CharacterLasso lassoClass = newLasso.GetComponent<CharacterLasso>();
+        lassoClass.setAttachment(_rb.transform);
+        Vector3 ForceToApply = ropeThrowForce * transform.forward;
+        ForceToApply.y = ForceToApply.y + 3;
+        lassoClass._rb.AddForce(ForceToApply);
+        Destroy(newLasso, 1f);
     }
 }

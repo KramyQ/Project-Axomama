@@ -154,7 +154,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5837495073165813522}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 74653d3f105371c489c37f2c2d60bb10, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -500,6 +500,7 @@ MonoBehaviour:
   rotationSpeed: 2
   airControl: 0.9
   canGlide: 0
+  ropeThrowForce: 400
   ForceScale: {x: 1, y: 0, z: 1}
   maxSpeed: 5
   speedFactor: 1
@@ -510,6 +511,8 @@ MonoBehaviour:
   wantsToJump: 0
   grounded: 1
   isMovementPressed: 0
+  lassoPrefab: {fileID: 1611829061796073527, guid: 12c30d2f33db5bf4b8d7391bf6abba1f,
+    type: 3}
 --- !u!1 &7299075481216001352
 GameObject:
   m_ObjectHideFlags: 0
