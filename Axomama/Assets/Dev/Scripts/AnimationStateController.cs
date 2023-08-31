@@ -14,12 +14,26 @@ public class AnimationStateController : MonoBehaviour
     {
         V3Movement.onCharacterJump += playJumpVFX;
         V3Movement.onCharacterLand += playLandVFX;
+        V3Movement.onCharacterStartMoving += playStartMovingVFX;
+        V3Movement.onCharacterStopMoving += playStopMovingVFX;
     }
 
     private void OnDisable()
     {
         V3Movement.onCharacterJump -= playJumpVFX;
         V3Movement.onCharacterLand -= playLandVFX;
+        V3Movement.onCharacterStartMoving -= playStartMovingVFX;
+        V3Movement.onCharacterStopMoving -= playStopMovingVFX;
+    }
+    
+    private void playStartMovingVFX()
+    {
+        Debug.Log("Start");
+    }
+    
+    private void playStopMovingVFX()
+    {
+        Debug.Log("Stop");
     }
 
     private void playLandVFX()

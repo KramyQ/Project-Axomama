@@ -14,6 +14,12 @@ public class V3Movement : NetworkBehaviour
     public static OnCharacterLand onCharacterLand;
     public delegate void OnCharacterJump();
     public static OnCharacterJump onCharacterJump;
+    
+    public delegate void OnCharacterStopMoving();
+    public static OnCharacterStopMoving onCharacterStopMoving;
+    
+    public delegate void OnCharacterStartMoving();
+    public static OnCharacterStartMoving onCharacterStartMoving;
     // SETUP PARAMS
     public float hoverHeight = 10;
     public float characterOffset = 1;
@@ -100,7 +106,22 @@ public class V3Movement : NetworkBehaviour
         Vector2 direction = context.ReadValue<Vector2>();
         currentMovement.x = direction.x;
         currentMovement.z = direction.y;
+        bool formerMovement = isMovementPressed;
         isMovementPressed = direction.x != 0 || direction.y != 0;
+        if (!formerMovement && formerMovement != isMovementPressed)
+        {
+            if (onCharacterStartMoving != null)
+            {
+                onCharacterStartMoving();
+            }
+        }
+        if (formerMovement && formerMovement != isMovementPressed)
+        {
+            if (onCharacterStopMoving != null)
+            {
+                onCharacterStopMoving();
+            }
+        }
     }
 
     private void move()
