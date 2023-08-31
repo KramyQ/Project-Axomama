@@ -17,6 +17,7 @@ public class V3Movement : NetworkBehaviour
     public float JumpForce = 10;
     public float rotationSpeed = 10;
     public float airControl = 0.5f;
+    public bool canGlide = false;
 
     public Vector3 ForceScale = new Vector3(1, 0, 1);
 
@@ -189,7 +190,7 @@ public class V3Movement : NetworkBehaviour
 
     private void applyFallingForces()
     {
-        if (!inJump && !grounded)
+        if (!inJump && !grounded && canGlide || !grounded && _rb.velocity.y < 0 && !canGlide)
         {
             _rb.AddForce(Vector3.down*gravityIncrease);
         }
