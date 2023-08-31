@@ -412,9 +412,9 @@ MonoBehaviour:
   offset: 5
   movementOffsetForce: 1
   movementHeightForce: 1
-  predictionDistance: 1
+  predictionDistance: 5
   Velocity: {x: 0, y: 0, z: 0}
-  SmoothTime: 0.3
+  SmoothTime: 0.6
 --- !u!114 &2370465733721196011
 MonoBehaviour:
   m_ObjectHideFlags: 0
