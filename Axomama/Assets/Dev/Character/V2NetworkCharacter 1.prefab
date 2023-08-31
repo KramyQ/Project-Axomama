@@ -505,6 +505,7 @@ MonoBehaviour:
   airControl: 0.9
   canGlide: 0
   ropeThrowForce: 400
+  paraboleForce: 400
   ForceScale: {x: 1, y: 0, z: 1}
   maxSpeed: 5
   speedFactor: 1

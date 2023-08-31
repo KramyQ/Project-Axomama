@@ -24,6 +24,7 @@ public class V3Movement : NetworkBehaviour
     public float airControl = 0.5f;
     public bool canGlide = false;
     public float ropeThrowForce = 300f;
+    public float paraboleForce = 300f;
 
     public Vector3 ForceScale = new Vector3(1, 0, 1);
 
@@ -234,7 +235,7 @@ public class V3Movement : NetworkBehaviour
         CharacterLasso lassoClass = newLasso.GetComponent<CharacterLasso>();
         lassoClass.setAttachment(_rb.transform);
         Vector3 ForceToApply = ropeThrowForce * transform.forward;
-        ForceToApply.y = ForceToApply.y + 3;
+        ForceToApply.y = ForceToApply.y + paraboleForce;
         lassoClass._rb.AddForce(ForceToApply);
         Destroy(newLasso, 1f);
     }
