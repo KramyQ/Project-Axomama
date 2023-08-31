@@ -44,6 +44,24 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LassoThrow"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb0b7e60-7aa8-4d8f-84a6-10ffe94e8664"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LassoTest"",
+                    ""type"": ""Button"",
+                    ""id"": ""64e8dfd0-a504-4e93-bc62-6ac36d1f6aee"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -189,6 +207,28 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a5bae08e-ddae-4e27-90ec-46d10cd8b474"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LassoThrow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1736c48b-8044-49cb-8319-7c3c20561635"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LassoTest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -199,6 +239,8 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_Move = m_PlayerMovement.FindAction("Move", throwIfNotFound: true);
         m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerMovement_LassoThrow = m_PlayerMovement.FindAction("LassoThrow", throwIfNotFound: true);
+        m_PlayerMovement_LassoTest = m_PlayerMovement.FindAction("LassoTest", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -262,12 +304,16 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
     private List<IPlayerMovementActions> m_PlayerMovementActionsCallbackInterfaces = new List<IPlayerMovementActions>();
     private readonly InputAction m_PlayerMovement_Move;
     private readonly InputAction m_PlayerMovement_Jump;
+    private readonly InputAction m_PlayerMovement_LassoThrow;
+    private readonly InputAction m_PlayerMovement_LassoTest;
     public struct PlayerMovementActions
     {
         private @TemporaryInputs m_Wrapper;
         public PlayerMovementActions(@TemporaryInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerMovement_Move;
         public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
+        public InputAction @LassoThrow => m_Wrapper.m_PlayerMovement_LassoThrow;
+        public InputAction @LassoTest => m_Wrapper.m_PlayerMovement_LassoTest;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -283,6 +329,12 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @LassoThrow.started += instance.OnLassoThrow;
+            @LassoThrow.performed += instance.OnLassoThrow;
+            @LassoThrow.canceled += instance.OnLassoThrow;
+            @LassoTest.started += instance.OnLassoTest;
+            @LassoTest.performed += instance.OnLassoTest;
+            @LassoTest.canceled += instance.OnLassoTest;
         }
 
         private void UnregisterCallbacks(IPlayerMovementActions instance)
@@ -293,6 +345,12 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @LassoThrow.started -= instance.OnLassoThrow;
+            @LassoThrow.performed -= instance.OnLassoThrow;
+            @LassoThrow.canceled -= instance.OnLassoThrow;
+            @LassoTest.started -= instance.OnLassoTest;
+            @LassoTest.performed -= instance.OnLassoTest;
+            @LassoTest.canceled -= instance.OnLassoTest;
         }
 
         public void RemoveCallbacks(IPlayerMovementActions instance)
@@ -314,5 +372,7 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnLassoThrow(InputAction.CallbackContext context);
+        void OnLassoTest(InputAction.CallbackContext context);
     }
 }
