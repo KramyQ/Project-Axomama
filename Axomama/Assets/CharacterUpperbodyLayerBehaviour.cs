@@ -29,7 +29,7 @@ public class CharacterUpperbodyLayerBehaviour : StateMachineBehaviour
             DOVirtual.Float(
                 animator.GetLayerWeight(layerIndex), 
                 0f, 
-                0.4f, 
+                0.7f, 
                 value => animator.SetLayerWeight(layerIndex, value));
         }
     }
