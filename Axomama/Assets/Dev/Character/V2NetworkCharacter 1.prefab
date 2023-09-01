@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 8347270908764603582}
   - component: {fileID: 5382168159028108995}
   - component: {fileID: 1277837476780429489}
+  - component: {fileID: -987357295976988160}
   m_Layer: 0
   m_Name: V2NetworkCharacter 1
   m_TagString: Untagged
@@ -411,11 +412,11 @@ MonoBehaviour:
   player: {fileID: 3628854690614391659}
   _rb: {fileID: 8347270908764603582}
   cameraHolder: {fileID: 6439424211400432384}
-  cameraHeight: 10
-  offset: 5
+  cameraHeight: 15
+  offset: 7
   movementOffsetForce: 1
   movementHeightForce: 1
-  predictionDistance: 5
+  predictionDistance: 6
   Velocity: {x: 0, y: 0, z: 0}
   SmoothTime: 0.6
 --- !u!114 &2370465733721196011
@@ -521,6 +522,23 @@ MonoBehaviour:
   isMovementPressed: 0
   lassoPrefab: {fileID: 1611829061796073527, guid: 12c30d2f33db5bf4b8d7391bf6abba1f,
     type: 3}
+--- !u!114 &-987357295976988160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659536212891205084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6757b231cedd544c583ef8aeaf773b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thickness: 0
+  material: {fileID: 0}
+  filter: -65535
+  m_SourceCollider: {fileID: 0}
+  m_DistanceField: {fileID: 0}
 --- !u!1 &7299075481216001352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,6 +1326,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6723796504252443511}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 1946ee536cbace3448ad6d5b22502da6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1946ee536cbace3448ad6d5b22502da6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1946ee536cbace3448ad6d5b22502da6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1946ee536cbace3448ad6d5b22502da6,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -258,6 +258,6 @@ public class V3Movement : NetworkBehaviour
         Vector3 ForceToApply = ropeThrowForce * transform.forward;
         ForceToApply.y = ForceToApply.y + paraboleForce;
         lassoClass._rb.AddForce(ForceToApply);
-        Destroy(newLasso, 1f);
+        // Destroy(newLasso, 1f);
     }
 }
