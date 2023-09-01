@@ -10,6 +10,7 @@ using UnityEngine.Rendering;
 
 public class V3Movement : NetworkBehaviour
 {
+    public bool latched = false;
     public delegate void OnCharacterLand();
     public static OnCharacterLand onCharacterLand;
     public delegate void OnCharacterJump();
@@ -31,6 +32,8 @@ public class V3Movement : NetworkBehaviour
     public bool canGlide = false;
     public float ropeThrowForce = 300f;
     public float paraboleForce = 300f;
+    public float latchedForceLoss = 0.2f;
+    private GameObject currentLasso;
 
     public Vector3 ForceScale = new Vector3(1, 0, 1);
 
@@ -130,6 +133,10 @@ public class V3Movement : NetworkBehaviour
         float airControlMultiplier = 1;
         if (!grounded) airControlMultiplier=airControl;
         Vector3 goalVelocityVector = airControlMultiplier * maxSpeed*speedFactor*currentMovement;
+        if (latched)
+        {
+            goalVelocityVector = goalVelocityVector * latchedForceLoss;
+        }
 
         m_goalVelocity = Vector3.MoveTowards(m_goalVelocity, goalVelocityVector + groundVelocity,
             accel * Time.fixedDeltaTime);
@@ -142,7 +149,7 @@ public class V3Movement : NetworkBehaviour
         
         _rb.AddForce(Vector3.Scale(neededAcceleration * _rb.mass, ForceScale));
 
-        if (wantsToJump && grounded)
+        if (wantsToJump && grounded || wantsToJump && latched)
         {
             _rb.AddForce(new Vector3(0,JumpForce, 0));
             if (onCharacterJump != null)
@@ -151,6 +158,11 @@ public class V3Movement : NetworkBehaviour
             }
             inJump = true;
             wantsToJump = false;
+            if (latched)
+            {
+                latched = false;
+                Destroy(currentLasso);
+            }
         }
         Vector3 velocityDirection = _rb.velocity;
         Vector3 speedForce = velocityDirection;
@@ -222,21 +234,25 @@ public class V3Movement : NetworkBehaviour
 
             float springForce = (x * hoverSpringStrength) - (relVel * hoverSpringStrength );
 
-            _rb.AddForce(rayDir * springForce);
+            // _rb.AddForce(rayDir * springForce);
 
-            if (hitBody != null)
-            {
-                hitBody.AddForceAtPosition(rayDir * -springForce, _rayHit.point);
-            }
+            // if (hitBody != null)
+            // {
+            //     hitBody.AddForceAtPosition(rayDir * -springForce, _rayHit.point);
+            // }
         }
         
     }
 
     private void applyFallingForces()
     {
-        if (!inJump && !grounded && canGlide || !grounded && _rb.velocity.y < 0 && !canGlide)
+        if (!latched && (!inJump && !grounded && canGlide || !grounded && _rb.velocity.y < 0 && !canGlide))
         {
             _rb.AddForce(Vector3.down*gravityIncrease);
+        }
+        if (latched && !grounded)
+        {
+            _rb.AddForce(Vector3.down*gravityIncrease/10f);
         }
     }
 
@@ -250,14 +266,25 @@ public class V3Movement : NetworkBehaviour
 
     private void lasso(InputAction.CallbackContext context)
     {
-        Vector3 spawnPoint = _rb.position - transform.forward * 3;
-        spawnPoint.y = spawnPoint.y - 2;
-        GameObject newLasso = Instantiate(lassoPrefab, spawnPoint, transform.rotation);
-        CharacterLasso lassoClass = newLasso.GetComponent<CharacterLasso>();
-        lassoClass.setAttachment(_rb.transform);
-        Vector3 ForceToApply = ropeThrowForce * transform.forward;
-        ForceToApply.y = ForceToApply.y + paraboleForce;
-        lassoClass._rb.AddForce(ForceToApply);
-        // Destroy(newLasso, 1f);
+        if (currentLasso)
+        {
+            latched = false;
+            Destroy(currentLasso);
+        }
+        else
+        {
+            Vector3 spawnPoint = _rb.position + transform.forward * 0.5f;
+            spawnPoint.y = spawnPoint.y + 1;
+            GameObject newLasso = Instantiate(lassoPrefab, spawnPoint, transform.rotation);
+            CharacterLasso lassoClass = newLasso.GetComponent<CharacterLasso>();
+            lassoClass.setAttachment(gameObject.transform);
+            lassoClass.setLassoer(this);
+            Vector3 ForceToApply = ropeThrowForce * transform.forward;
+            ForceToApply.y = ForceToApply.y + paraboleForce;
+            lassoClass._rb.AddForce(ForceToApply);
+            currentLasso = lassoClass.gameObject;
+            // Destroy(newLasso, 1f);
+        }
+
     }
 }

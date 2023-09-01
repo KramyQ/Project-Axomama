@@ -50,8 +50,8 @@ public class AnimationStateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetBool("IsMoving" ,movementClass.isMovementPressed);
-        animator.SetBool("IsGrounded" ,movementClass.grounded);
+        animator.SetBool("IsMoving", movementClass.isMovementPressed && movementClass.grounded);
+        animator.SetBool("IsGrounded" ,movementClass.grounded && !movementClass.latched);
         if (movementClass.wantsToJump)
         {
             animator.SetTrigger("Jump");
