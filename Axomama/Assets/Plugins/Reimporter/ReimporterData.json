@@ -93,5 +93,10 @@
     "AssetName": "Character_01_Land_Jog_Forward",
     "OuterPath": "C:/Users/etien/Documents/Projects/Project_Axomama/Raw/Meshes/Character/Animations/Character_01_Land_Jog_Forward.fbx",
     "InnerPath": "Assets/Art/Meshes/Characters/Character_01/Animations/Character_01_Land_Jog_Forward.fbx"
+  },
+  {
+    "AssetName": "Pole_01",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Project_Axomama/Raw/Meshes/Items/Pole_01.fbx",
+    "InnerPath": "Assets/Art/Meshes/Items/Pole_01.fbx"
   }
 ]
