@@ -31,23 +31,13 @@ public class AnimationStateController : MonoBehaviour
         V3Movement.onCharacterJump -= onCharacterJumpEvent.Invoke;
         V3Movement.onCharacterLand -= onCharacterLandEvent.Invoke;
     }
-    
-    private void playStartMovingVFX()
-    {
-    }
-    
-    private void playStopMovingVFX()
-    {
-    }
 
-    private void playLandVFX()
+    public void TryPlayMovementTrailVFX()
     {
-        // Debug.Log("landed");
-    }
-    
-    private void playJumpVFX()
-    {
-        // Debug.Log("jumped");
+        if (movementClass.isMovementPressed)
+        {
+            onStartMovingJumpEvent.Invoke();
+        }
     }
 
 
