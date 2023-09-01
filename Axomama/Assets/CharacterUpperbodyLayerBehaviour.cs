@@ -8,6 +8,8 @@ public class CharacterUpperbodyLayerBehaviour : StateMachineBehaviour
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (!stateInfo.IsName("Locomotion")) return;
+        
         DOVirtual.Float(
             animator.GetLayerWeight(layerIndex), 
             1f, 

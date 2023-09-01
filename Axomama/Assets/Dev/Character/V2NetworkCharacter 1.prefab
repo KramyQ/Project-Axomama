@@ -850,6 +850,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3192553523547511895}
   m_SourcePrefab: {fileID: 100100000, guid: 1946ee536cbace3448ad6d5b22502da6, type: 3}
+--- !u!95 &958449220029347987 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 1946ee536cbace3448ad6d5b22502da6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6640432122435323138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5829597477012306003 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1946ee536cbace3448ad6d5b22502da6,
@@ -916,7 +922,19 @@ MonoBehaviour:
         m_CallState: 2
   onCharacterLandEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 958449220029347987}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Land
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &6605994125829645033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1946ee536cbace3448ad6d5b22502da6,

@@ -1,0 +1,97 @@
+[
+  {
+    "AssetName": "PC_Attack_01",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Gamedev/Prototype/Characters/Animations/PC_Attack_01.fbx",
+    "InnerPath": "Assets/Game/Art/Meshes/Characters/Prototype_Character/PC_Attack_01.fbx"
+  },
+  {
+    "AssetName": "PC_Attack_02",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Gamedev/Prototype/Characters/Animations/PC_Attack_02.fbx",
+    "InnerPath": "Assets/Game/Art/Meshes/Characters/Prototype_Character/PC_Attack_02.fbx"
+  },
+  {
+    "AssetName": "PC_Walk_Torch_F",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Gamedev/Prototype/Characters/Animations/PC_Walk_Torch_F.fbx",
+    "InnerPath": "Assets/Game/Art/Meshes/Characters/Prototype_Character/PC_Walk_Torch_F.fbx"
+  },
+  {
+    "AssetName": "PC_Walk_F",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Gamedev/Prototype/Characters/Animations/PC_Walk_F.fbx",
+    "InnerPath": "Assets/Game/Art/Meshes/Characters/Prototype_Character/PC_Walk_F.fbx"
+  },
+  {
+    "AssetName": "Tile_Goal",
+    "OuterPath": "",
+    "InnerPath": "Assets/Game/Art/Meshes/Tiles/Tile_Exit.fbx"
+  },
+  {
+    "AssetName": "Gallahad_Icon",
+    "OuterPath": "",
+    "InnerPath": "Assets/Game/Art/UI/Gallahad_Icon.png"
+  },
+  {
+    "AssetName": "Circle_02",
+    "OuterPath": "",
+    "InnerPath": "Assets/Game/Art/UI/Circle_02.png"
+  },
+  {
+    "AssetName": "Felarius_Icon",
+    "OuterPath": "",
+    "InnerPath": "Assets/Game/Art/UI/Felarius_Icon.png"
+  },
+  {
+    "AssetName": "Circle_01",
+    "OuterPath": "",
+    "InnerPath": "Assets/Game/Art/UI/Circle_01.png"
+  },
+  {
+    "AssetName": "Percival_Icon",
+    "OuterPath": "",
+    "InnerPath": "Assets/Game/Art/UI/Percival_Icon.png"
+  },
+  {
+    "AssetName": "Valerian_Icon",
+    "OuterPath": "",
+    "InnerPath": "Assets/Game/Art/UI/Valerian_Icon.png"
+  },
+  {
+    "AssetName": "Circle_02_Item",
+    "OuterPath": "",
+    "InnerPath": "Assets/Game/Art/UI/Circle_02_Item.png"
+  },
+  {
+    "AssetName": "Flame_01",
+    "OuterPath": "",
+    "InnerPath": "Assets/Game/Art/UI/Flame_01.png"
+  },
+  {
+    "AssetName": "Circle_Full",
+    "OuterPath": "",
+    "InnerPath": "Assets/Game/Art/UI/Circle_Full.png"
+  },
+  {
+    "AssetName": "Book_Face_01",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Project_Knights/Raw/Meshes/Book_01/Book_Face_01.fbx",
+    "InnerPath": "Assets/Game/Art/Meshes/Book_Face_01.fbx"
+  },
+  {
+    "AssetName": "Enemy_Spawn",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Project_Knights/Raw/Meshes/Enemy_Spawn.fbx",
+    "InnerPath": "Assets/Game/Art/Meshes/Tiles/Enemy_Spawn.fbx"
+  },
+  {
+    "AssetName": "Character_01_Jump",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Project_Axomama/Raw/Meshes/Character/Animations/Character_01_Jump.fbx",
+    "InnerPath": "Assets/Art/Meshes/Characters/Character_01/Animations/Character_01_Jump.fbx"
+  },
+  {
+    "AssetName": "Cloud_01",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/VFX/Cloud_01.fbx"
+  },
+  {
+    "AssetName": "Character_01_Land_Jog_Forward",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Project_Axomama/Raw/Meshes/Character/Animations/Character_01_Land_Jog_Forward.fbx",
+    "InnerPath": "Assets/Art/Meshes/Characters/Character_01/Animations/Character_01_Land_Jog_Forward.fbx"
+  }
+]
