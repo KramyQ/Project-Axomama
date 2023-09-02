@@ -43,10 +43,7 @@ public class V4Movement : MonoBehaviour
     public float GravityIncrease = 10f;
     public float LatchedGravityIncrease = 2f;
     // Speed Settings
-    public float MaxTickAcceleration = 150;
     public float MaxSpeed = 20f;
-    public float Acceleration = 200f;
-    private float AccelFactor = 10f;
     private float SpeedFactor = 1f;
     public Vector3 ForceScale = new Vector3(1, 0, 1);
     public float RotationSpeed = 3f;
@@ -140,16 +137,15 @@ public class V4Movement : MonoBehaviour
     
     private Vector3 getGoalVelocity()
     {
-        float accel = Acceleration * AccelFactor;
         Vector3 goalVelocityVector = MaxSpeed*SpeedFactor*moveInput;
         relativeGoalVelocity = Vector3.MoveTowards(relativeGoalVelocity, goalVelocityVector,
-            accel * Time.fixedDeltaTime);;
+            150 * Time.fixedDeltaTime);;
         return relativeGoalVelocity;
     }
 
     private Vector3 getNeededAccel(Vector3 goalVelocity)
-    {   float maxAccel = MaxTickAcceleration * AccelFactor;
-        return Vector3.ClampMagnitude(((goalVelocity - _rb.velocity)  / Time.fixedDeltaTime), maxAccel);
+    {  
+        return Vector3.ClampMagnitude(((goalVelocity - _rb.velocity)  / Time.fixedDeltaTime), 150);
     }
     
     private void jump()
