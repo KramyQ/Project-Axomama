@@ -45,7 +45,7 @@ public class V4Movement : MonoBehaviour
     // Speed Settings
     public float MaxTickAcceleration = 150;
     public float MaxSpeed = 20f;
-    public float Acceleration = 200;
+    public float Acceleration = 200f;
     private float AccelFactor = 10f;
     private float SpeedFactor = 1f;
     public Vector3 ForceScale = new Vector3(1, 0, 1);
@@ -121,7 +121,7 @@ public class V4Movement : MonoBehaviour
     {
         Vector3 neededAccel = getNeededAccel(getGoalVelocity());
         
-        _rb.AddForce(Vector3.Scale(Time.fixedDeltaTime * _rb.mass * neededAccel, ForceScale));
+        _rb.AddForce(Vector3.Scale(_rb.mass * neededAccel, ForceScale));
         
         Vector3 velocityDirection = _rb.velocity;
         Vector3 speedForce = velocityDirection;
@@ -169,7 +169,6 @@ public class V4Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(_rb.velocity.magnitude);
         setIsGrounded();
         move();
         applyFallingForces();
