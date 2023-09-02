@@ -51,7 +51,7 @@ public class V2AnimationStateController : MonoBehaviour
     {
         animator.SetBool("IsMoving", movementClass.isMovePressed && movementClass.isGrounded);
         animator.SetBool("IsGrounded" ,movementClass.isGrounded && !movementClass.isLatched);
-        if (movementClass.wantsToJump)
+        if (movementClass.wantsToJump && movementClass.isGrounded)
         {
             animator.SetTrigger("Jump");
         }
