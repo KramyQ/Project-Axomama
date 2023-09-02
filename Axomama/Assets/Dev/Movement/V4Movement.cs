@@ -47,6 +47,7 @@ public class V4Movement : MonoBehaviour
     private float SpeedFactor = 1f;
     public Vector3 ForceScale = new Vector3(1, 0, 1);
     public float RotationSpeed = 3f;
+    public float AirControl = 0.8f;
 
     private void Awake()
     {
@@ -140,6 +141,7 @@ public class V4Movement : MonoBehaviour
     private Vector3 getGoalVelocity()
     {
         Vector3 goalVelocityVector = MaxSpeed*SpeedFactor*moveInput;
+        if (!isGrounded) goalVelocityVector = goalVelocityVector * AirControl;
         relativeGoalVelocity = Vector3.MoveTowards(relativeGoalVelocity, goalVelocityVector,
             150 * Time.fixedDeltaTime);;
         return relativeGoalVelocity;
