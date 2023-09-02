@@ -112,11 +112,11 @@ GameObject:
   - component: {fileID: 2370465733721196011}
   - component: {fileID: 8347270908764603582}
   - component: {fileID: 5382168159028108995}
-  - component: {fileID: 1277837476780429489}
   - component: {fileID: -987357295976988160}
   - component: {fileID: 8134669232766668190}
+  - component: {fileID: 770184726893572231}
   m_Layer: 0
-  m_Name: V2NetworkCharacter 1
+  m_Name: V3NetworkCharacter 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6659536212891205084}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 74653d3f105371c489c37f2c2d60bb10, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -275,42 +275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1277837476780429489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6659536212891205084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8650b8f5b3a5c26418ad257941c67043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  latched: 0
-  hoverHeight: 3
-  characterOffset: 1.1
-  groundDistance: 1
-  hoverSpringStrength: 5
-  JumpForce: 600
-  rotationSpeed: 2
-  airControl: 0.9
-  canGlide: 0
-  ropeThrowForce: 500
-  paraboleForce: 400
-  latchedForceLoss: 0.8
-  ForceScale: {x: 1, y: 0, z: 1}
-  maxSpeed: 5
-  speedFactor: 1
-  acceleration: 50
-  maxAccelForce: 200
-  gravityIncrease: 60
-  _rb: {fileID: 8347270908764603582}
-  wantsToJump: 0
-  grounded: 1
-  isMovementPressed: 0
-  lassoPrefab: {fileID: 1611829061796073527, guid: 12c30d2f33db5bf4b8d7391bf6abba1f,
-    type: 3}
 --- !u!114 &-987357295976988160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,6 +305,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kinematicForParticles: 0
+--- !u!114 &770184726893572231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659536212891205084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a9f024166253748964e39e4a8033f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovePressed: 0
+  wantsToJump: 0
+  isGrounded: 1
+  isLatched: 0
+  _rb: {fileID: 8347270908764603582}
+  MaxGroundDistance: 1.1
+  CharacterHeightOffset: 0
+  JumpForce: 650
+  GravityIncrease: 70
+  LatchedGravityIncrease: 2
+  MaxTickAcceleration: 100
+  MaxSpeed: 12
+  Acceleration: 1000
+  ForceScale: {x: 1, y: 0, z: 1}
+  RotationSpeed: 2
 --- !u!1 &7299075481216001352
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,12 +755,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 397858219221533173}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &5916366500691337141 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6313587138370805312, guid: 07da0f68c97c905419aa9723b83bf362,
-    type: 3}
-  m_PrefabInstance: {fileID: 397858219221533173}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1823203993289977107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -846,12 +831,6 @@ PrefabInstance:
 --- !u!4 &6728591616725822285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4912741314103232094, guid: 7879a741cc0879547946d12591651cd7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1823203993289977107}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &8961601585684150228 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7283256789067930311, guid: 7879a741cc0879547946d12591651cd7,
     type: 3}
   m_PrefabInstance: {fileID: 1823203993289977107}
   m_PrefabAsset: {fileID: 0}
@@ -1114,12 +1093,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5779384248209106874}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &8191485859854324747 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2421388106339808177, guid: 7bbeaa3b3205d7b4c8ac9af66128d021,
-    type: 3}
-  m_PrefabInstance: {fileID: 5779384248209106874}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6640432122435323138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1151,7 +1124,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1946ee536cbace3448ad6d5b22502da6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.041
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1946ee536cbace3448ad6d5b22502da6,
         type: 3}
@@ -1210,7 +1183,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1946ee536cbace3448ad6d5b22502da6,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3192553523547511895}
+      addedObject: {fileID: 5615789933700124108}
   m_SourcePrefab: {fileID: 100100000, guid: 1946ee536cbace3448ad6d5b22502da6, type: 3}
 --- !u!1 &5829597477012306003 stripped
 GameObject:
@@ -1218,7 +1191,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6640432122435323138}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3192553523547511895
+--- !u!114 &5615789933700124108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1227,14 +1200,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5829597477012306003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4b2fedf0e703249ba3e1220cda7cb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 65350ad99f45f8d4e82bb6ce34572964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementClass: {fileID: 1277837476780429489}
+  movementClass: {fileID: 770184726893572231}
   onStopMovingJumpEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5916366500691337141}
+      - m_Target: {fileID: 6313587138370805312, guid: 07da0f68c97c905419aa9723b83bf362,
+          type: 3}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
         m_MethodName: Stop
         m_Mode: 1
@@ -1249,7 +1223,8 @@ MonoBehaviour:
   onStartMovingJumpEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5916366500691337141}
+      - m_Target: {fileID: 6313587138370805312, guid: 07da0f68c97c905419aa9723b83bf362,
+          type: 3}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
         m_MethodName: Play
         m_Mode: 1
@@ -1264,9 +1239,10 @@ MonoBehaviour:
   onCharacterJumpEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5916366500691337141}
+      - m_Target: {fileID: 2421388106339808177, guid: 7bbeaa3b3205d7b4c8ac9af66128d021,
+          type: 3}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Stop
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1276,9 +1252,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8191485859854324747}
+      - m_Target: {fileID: 6313587138370805312, guid: 07da0f68c97c905419aa9723b83bf362,
+          type: 3}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
+        m_MethodName: Stop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1291,7 +1268,8 @@ MonoBehaviour:
   onCharacterLandEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8961601585684150228}
+      - m_Target: {fileID: 7283256789067930311, guid: 7879a741cc0879547946d12591651cd7,
+          type: 3}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
         m_MethodName: Play
         m_Mode: 1
@@ -1303,8 +1281,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3192553523547511895}
-        m_TargetAssemblyTypeName: AnimationStateController, Assembly-CSharp
+      - m_Target: {fileID: 5615789933700124108}
+        m_TargetAssemblyTypeName: V2AnimationStateController, Assembly-CSharp
         m_MethodName: TryPlayMovementTrailVFX
         m_Mode: 1
         m_Arguments:
