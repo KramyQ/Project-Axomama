@@ -325,11 +325,11 @@ MonoBehaviour:
   MaxGroundDistance: 1.1
   CharacterHeightOffset: 0
   JumpForce: 650
-  GravityIncrease: 70
+  GravityIncrease: 60
   LatchedGravityIncrease: 2
-  MaxTickAcceleration: 100
-  MaxSpeed: 12
-  Acceleration: 1000
+  MaxTickAcceleration: 200
+  MaxSpeed: 5
+  Acceleration: 50
   ForceScale: {x: 1, y: 0, z: 1}
   RotationSpeed: 2
 --- !u!1 &7299075481216001352
