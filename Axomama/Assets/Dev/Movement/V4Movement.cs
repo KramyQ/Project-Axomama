@@ -119,7 +119,11 @@ public class V4Movement : MonoBehaviour
         Vector3 neededAccel = getNeededAccel(getGoalVelocity());
         
         _rb.AddForce(Vector3.Scale(_rb.mass * neededAccel, ForceScale));
-        
+        if(wantsToJump && isGrounded || wantsToJump && isLatched) jump();
+    }
+
+    private void setRotation()
+    {
         Vector3 velocityDirection = _rb.velocity;
         Vector3 speedForce = velocityDirection;
         speedForce.y = 0;
@@ -131,8 +135,6 @@ public class V4Movement : MonoBehaviour
                 velocityDirection.magnitude * RotationSpeed * Time.fixedDeltaTime);
             _rb.MoveRotation(Quaternion.Euler(0, slerp.eulerAngles.y, 0));
         }
-        
-        if(wantsToJump && isGrounded || wantsToJump && isLatched) jump();
     }
     
     private Vector3 getGoalVelocity()
@@ -167,6 +169,7 @@ public class V4Movement : MonoBehaviour
     {
         setIsGrounded();
         move();
+        setRotation();
         applyFallingForces();
     }
 
