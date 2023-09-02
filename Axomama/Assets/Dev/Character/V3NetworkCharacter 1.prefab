@@ -330,6 +330,7 @@ MonoBehaviour:
   MaxSpeed: 5
   ForceScale: {x: 1, y: 0, z: 1}
   RotationSpeed: 3
+  AirControl: 0.8
 --- !u!1 &7299075481216001352
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +516,7 @@ PrefabInstance:
     - target: {fileID: 96190655421923343, guid: 07da0f68c97c905419aa9723b83bf362,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 96190655421923343, guid: 07da0f68c97c905419aa9723b83bf362,
         type: 3}
@@ -753,6 +754,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 397858219221533173}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &5916366500691337141 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6313587138370805312, guid: 07da0f68c97c905419aa9723b83bf362,
+    type: 3}
+  m_PrefabInstance: {fileID: 397858219221533173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1823203993289977107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -769,7 +776,7 @@ PrefabInstance:
     - target: {fileID: 4912741314103232094, guid: 7879a741cc0879547946d12591651cd7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4912741314103232094, guid: 7879a741cc0879547946d12591651cd7,
         type: 3}
@@ -832,6 +839,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1823203993289977107}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &8961601585684150228 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7283256789067930311, guid: 7879a741cc0879547946d12591651cd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1823203993289977107}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5779384248209106874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -848,7 +861,7 @@ PrefabInstance:
     - target: {fileID: 46369579481935656, guid: 7bbeaa3b3205d7b4c8ac9af66128d021,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 46369579481935656, guid: 7bbeaa3b3205d7b4c8ac9af66128d021,
         type: 3}
@@ -1091,6 +1104,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5779384248209106874}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &8191485859854324747 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2421388106339808177, guid: 7bbeaa3b3205d7b4c8ac9af66128d021,
+    type: 3}
+  m_PrefabInstance: {fileID: 5779384248209106874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6640432122435323138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1205,8 +1224,7 @@ MonoBehaviour:
   onStopMovingJumpEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6313587138370805312, guid: 07da0f68c97c905419aa9723b83bf362,
-          type: 3}
+      - m_Target: {fileID: 5916366500691337141}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
         m_MethodName: Stop
         m_Mode: 1
@@ -1221,8 +1239,7 @@ MonoBehaviour:
   onStartMovingJumpEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6313587138370805312, guid: 07da0f68c97c905419aa9723b83bf362,
-          type: 3}
+      - m_Target: {fileID: 5916366500691337141}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
         m_MethodName: Play
         m_Mode: 1
@@ -1237,8 +1254,7 @@ MonoBehaviour:
   onCharacterJumpEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2421388106339808177, guid: 7bbeaa3b3205d7b4c8ac9af66128d021,
-          type: 3}
+      - m_Target: {fileID: 8191485859854324747}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
         m_MethodName: Play
         m_Mode: 1
@@ -1250,8 +1266,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6313587138370805312, guid: 07da0f68c97c905419aa9723b83bf362,
-          type: 3}
+      - m_Target: {fileID: 5916366500691337141}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
         m_MethodName: Stop
         m_Mode: 1
@@ -1266,10 +1281,9 @@ MonoBehaviour:
   onCharacterLandEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7283256789067930311, guid: 7879a741cc0879547946d12591651cd7,
-          type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 5615789933700124108}
+        m_TargetAssemblyTypeName: V2AnimationStateController, Assembly-CSharp
+        m_MethodName: TryPlayMovementTrailVFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1279,9 +1293,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5615789933700124108}
-        m_TargetAssemblyTypeName: V2AnimationStateController, Assembly-CSharp
-        m_MethodName: TryPlayMovementTrailVFX
+      - m_Target: {fileID: 8961601585684150228}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
