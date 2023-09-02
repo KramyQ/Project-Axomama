@@ -103,5 +103,10 @@
     "AssetName": "Character_01_Roll",
     "OuterPath": "",
     "InnerPath": "Assets/Art/Meshes/Characters/Character_01/Animations/Character_01_Roll.fbx"
+  },
+  {
+    "AssetName": "teFichier 1decal aim",
+    "OuterPath": "",
+    "InnerPath": "Assets/Dev/Character/Lasso/decalAimLasso.png"
   }
 ]

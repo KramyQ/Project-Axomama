@@ -62,6 +62,15 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AimLasso"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""af02b836-10e6-4fb8-93f4-0178371e23e3"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -240,6 +249,17 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
                     ""action"": ""LassoTest"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de6d5da5-e475-43f5-acf2-8210905d6f03"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimLasso"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -252,6 +272,7 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
         m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
         m_PlayerMovement_LassoThrow = m_PlayerMovement.FindAction("LassoThrow", throwIfNotFound: true);
         m_PlayerMovement_LassoTest = m_PlayerMovement.FindAction("LassoTest", throwIfNotFound: true);
+        m_PlayerMovement_AimLasso = m_PlayerMovement.FindAction("AimLasso", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +338,7 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Jump;
     private readonly InputAction m_PlayerMovement_LassoThrow;
     private readonly InputAction m_PlayerMovement_LassoTest;
+    private readonly InputAction m_PlayerMovement_AimLasso;
     public struct PlayerMovementActions
     {
         private @TemporaryInputs m_Wrapper;
@@ -325,6 +347,7 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
         public InputAction @LassoThrow => m_Wrapper.m_PlayerMovement_LassoThrow;
         public InputAction @LassoTest => m_Wrapper.m_PlayerMovement_LassoTest;
+        public InputAction @AimLasso => m_Wrapper.m_PlayerMovement_AimLasso;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -346,6 +369,9 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
             @LassoTest.started += instance.OnLassoTest;
             @LassoTest.performed += instance.OnLassoTest;
             @LassoTest.canceled += instance.OnLassoTest;
+            @AimLasso.started += instance.OnAimLasso;
+            @AimLasso.performed += instance.OnAimLasso;
+            @AimLasso.canceled += instance.OnAimLasso;
         }
 
         private void UnregisterCallbacks(IPlayerMovementActions instance)
@@ -362,6 +388,9 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
             @LassoTest.started -= instance.OnLassoTest;
             @LassoTest.performed -= instance.OnLassoTest;
             @LassoTest.canceled -= instance.OnLassoTest;
+            @AimLasso.started -= instance.OnAimLasso;
+            @AimLasso.performed -= instance.OnAimLasso;
+            @AimLasso.canceled -= instance.OnAimLasso;
         }
 
         public void RemoveCallbacks(IPlayerMovementActions instance)
@@ -385,5 +414,6 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnLassoThrow(InputAction.CallbackContext context);
         void OnLassoTest(InputAction.CallbackContext context);
+        void OnAimLasso(InputAction.CallbackContext context);
     }
 }

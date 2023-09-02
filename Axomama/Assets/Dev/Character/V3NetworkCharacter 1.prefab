@@ -331,6 +331,10 @@ MonoBehaviour:
   ForceScale: {x: 1, y: 0, z: 1}
   RotationSpeed: 3
   AirControl: 0.8
+  aimingDecalPrefab: {fileID: 6867859683398847689, guid: aea90327ecc162941806d3f7fdb256e8,
+    type: 3}
+  decalRotationSpeed: 10
+  aimingSlowDOwn: 0.4
 --- !u!1 &7299075481216001352
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,7 @@ public class V4Movement : MonoBehaviour
     public bool isGrounded = true;
     public bool isLatched = false;
     private bool isJumping = false;
+    private bool isAiming = false;
     
     // Physics
     
@@ -49,6 +50,14 @@ public class V4Movement : MonoBehaviour
     public float RotationSpeed = 3f;
     public float AirControl = 0.8f;
 
+    // LASSO
+    [SerializeField]
+    private GameObject aimingDecalPrefab;
+    private GameObject aimingDecalInstance;
+    private Vector3 aimingDir = Vector3.zero;
+    public float decalRotationSpeed = 10f;
+    public float aimingSlowDOwn = 0.5f;
+
     private void Awake()
     {
         m_playerInputActions = new TemporaryInputs();
@@ -70,7 +79,15 @@ public class V4Movement : MonoBehaviour
         m_playerInputActions.PlayerMovement.Move.canceled += setMoveInput;
         m_playerInputActions.PlayerMovement.Jump.performed += setJumpInput;
         m_playerInputActions.PlayerMovement.Jump.canceled += setJumpInput;
+        m_playerInputActions.PlayerMovement.AimLasso.performed += aimLasso;
+        m_playerInputActions.PlayerMovement.AimLasso.canceled += aimLasso;
         // m_playerInputActions.PlayerMovement.LassoTest.performed += lasso;
+    }
+
+    private void aimLasso(InputAction.CallbackContext context)
+    {
+        Vector2 inputDirection = context.ReadValue<Vector2>().normalized;
+        aimingDir = new Vector3(inputDirection.x, 0, inputDirection.y);
     }
 
     private void setMoveInput(InputAction.CallbackContext context)
@@ -142,6 +159,7 @@ public class V4Movement : MonoBehaviour
     {
         Vector3 goalVelocityVector = MaxSpeed*SpeedFactor*moveInput;
         if (!isGrounded) goalVelocityVector = goalVelocityVector * AirControl;
+        if (isAiming) goalVelocityVector = goalVelocityVector * aimingSlowDOwn;
         relativeGoalVelocity = Vector3.MoveTowards(relativeGoalVelocity, goalVelocityVector,
             150 * Time.fixedDeltaTime);;
         return relativeGoalVelocity;
@@ -167,12 +185,36 @@ public class V4Movement : MonoBehaviour
         if (isLatched && !isGrounded)  _rb.AddForce(Vector3.down*LatchedGravityIncrease);
     }
 
+    private void handleLassoAiming()
+    {
+        if (aimingDecalInstance)
+        {
+            aimingDecalInstance.transform.position =  Vector3.Lerp(aimingDecalInstance.transform.position,transform.position + aimingDir * 3 + new Vector3(0,1,0),decalRotationSpeed);
+            aimingDecalInstance.transform.LookAt(aimingDecalInstance.transform.position+ aimingDir);
+        }
+        else
+        {
+            aimingDecalInstance = Instantiate(aimingDecalPrefab, transform.position +  aimingDir * 5 + new Vector3(0,1,0), transform.rotation);
+        }
+
+        if (aimingDir == Vector3.zero)
+        {
+            Destroy(aimingDecalInstance);
+            isAiming = false;
+        }
+        else
+        {
+            isAiming = true;
+        }
+    }
+
     private void FixedUpdate()
     {
         setIsGrounded();
         move();
         setRotation();
         applyFallingForces();
+        handleLassoAiming();
     }
 
 
