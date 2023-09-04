@@ -20,16 +20,8 @@ public class CharacterLasso : MonoBehaviour
     {
         ObiParticleAttachment[] components = obiRope.GetComponents<ObiParticleAttachment>();
         latchAttach = components[0];
+        Debug.Log(latchAttach.isBound);
         characterAttach = components[1];
-    }
-
-    public void setAttachment(Transform charactTransform)
-    {
-        characterAttach.target = charactTransform;
-    }
-    
-    public void setLassoer(V3Movement lassoerMovementClass)
-    {
-        movementClass = lassoerMovementClass;
+        Debug.Log(characterAttach.isBound);
     }
 }

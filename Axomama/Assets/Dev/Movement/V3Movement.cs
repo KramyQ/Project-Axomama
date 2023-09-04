@@ -277,8 +277,6 @@ public class V3Movement : NetworkBehaviour
             spawnPoint.y = spawnPoint.y + 1;
             GameObject newLasso = Instantiate(lassoPrefab, spawnPoint, transform.rotation);
             CharacterLasso lassoClass = newLasso.GetComponent<CharacterLasso>();
-            lassoClass.setAttachment(gameObject.transform);
-            lassoClass.setLassoer(this);
             Vector3 ForceToApply = ropeThrowForce * transform.forward;
             ForceToApply.y = ForceToApply.y + paraboleForce;
             lassoClass._rb.AddForce(ForceToApply);

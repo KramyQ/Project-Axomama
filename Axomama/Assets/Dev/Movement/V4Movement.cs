@@ -57,6 +57,10 @@ public class V4Movement : MonoBehaviour
     private Vector3 aimingDir = Vector3.zero;
     public float decalRotationSpeed = 10f;
     public float aimingSlowDOwn = 0.5f;
+    
+    // Temp Class Ref
+    [SerializeField] private ropeManager charRopeManager;
+    
 
     private void Awake()
     {
@@ -81,13 +85,21 @@ public class V4Movement : MonoBehaviour
         m_playerInputActions.PlayerMovement.Jump.canceled += setJumpInput;
         m_playerInputActions.PlayerMovement.AimLasso.performed += aimLasso;
         m_playerInputActions.PlayerMovement.AimLasso.canceled += aimLasso;
-        // m_playerInputActions.PlayerMovement.LassoTest.performed += lasso;
+        m_playerInputActions.PlayerMovement.LassoTest.performed += lasso;
     }
 
     private void aimLasso(InputAction.CallbackContext context)
     {
         Vector2 inputDirection = context.ReadValue<Vector2>().normalized;
         aimingDir = new Vector3(inputDirection.x, 0, inputDirection.y);
+    }
+
+    private void lasso(InputAction.CallbackContext context)
+    {
+        if (isAiming)
+        {
+            charRopeManager.throwRope(aimingDir);
+        }
     }
 
     private void setMoveInput(InputAction.CallbackContext context)

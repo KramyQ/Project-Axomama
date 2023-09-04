@@ -7,7 +7,7 @@ using Obi;
 using Unity.VisualScripting;
 using UnityEngine.Events;
 
-public class RopeComponent : MonoBehaviour
+public class RopeComponent2 : MonoBehaviour
 {
     public Camera camera;
     public ObiRope obiRope;
@@ -58,11 +58,9 @@ public class RopeComponent : MonoBehaviour
         _handBatch = new ObiPinConstraintsBatch();
         
         // attach to hand
-        _handBatch.AddConstraint(obiRope.elements[0].particle1, handAttachTransform.GetComponent<ObiCollider>(), transform.localPosition, Quaternion.identity, 0, 0, float.PositiveInfinity);
+        _handBatch.AddConstraint(obiRope.elements[0].particle1, handAttachTransform.GetComponent<ObiCollider>(), transform.localPosition, Quaternion.identity, 0, 0,10f);
         _handBatch.activeConstraintCount = 1;
-        
         _pinConstraints.AddBatch(_handBatch);
-        
         obiRope.SetConstraintsDirty(Oni.ConstraintType.Pin);
         
         // set particle masses at zero to move points
@@ -81,8 +79,6 @@ public class RopeComponent : MonoBehaviour
             obiRopeCursor.ChangeLength(aimRopeLength);
             _currentRopeLength = aimRopeLength;
             
-            animator.SetLayerWeight(1, 1f);
-            animator.SetBool("IsAiming", true);
             _isAiming = true;
             
             onStartAiming.Invoke();
@@ -90,16 +86,13 @@ public class RopeComponent : MonoBehaviour
 
         if (Input.GetMouseButtonUp(1))
         {
-            animator.SetLayerWeight(1, 0f);
-            
+
             _isAiming = false;
-            animator.SetBool("IsAiming", false);
-            
+
             if (_isAttached)
                 StartCoroutine(DetachRope());
 
             _isAttached = false;
-            animator.SetBool("IsHolding", false);
 
             obiRopeCursor.ChangeLength(aimRopeLength);
             
@@ -157,7 +150,6 @@ public class RopeComponent : MonoBehaviour
 
             StartCoroutine(ThrowRope());
             
-            animator.SetTrigger("Throw");
         }
         
         // Rope extending --------------------------------------
@@ -232,7 +224,6 @@ public class RopeComponent : MonoBehaviour
             // check for collision
             var element = obiRope.GetElementAt(1,out float elementMu);
             var index1 = element.particle1; // first particle in the rope
-
             if (Physics.Raycast(obiRope.GetParticlePosition(index1), direction, out _hit, 0.5f))
             {
                 ObiColliderBase hitObiColliderBase = _hit.collider.GetComponent<ObiColliderBase>();
@@ -249,8 +240,7 @@ public class RopeComponent : MonoBehaviour
                     obiRope.SetConstraintsDirty(Oni.ConstraintType.Pin);
                     
                     _isAttached = true;
-                    animator.SetBool("IsHolding", true);
-                    
+
                     obiRopeCursor.ChangeLength(Vector3.Distance(handAttachTransform.position, _hit.point));
                     
                     onAttach.Invoke(_hit.point);
@@ -258,7 +248,6 @@ public class RopeComponent : MonoBehaviour
                     break;
                 }
             }
-            Debug.DrawRay(obiRope.GetParticlePosition(index1), direction, Color.green);
 
             // wait one frame:
             yield return null;
