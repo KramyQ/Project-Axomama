@@ -49,7 +49,7 @@ public class generateMap : MonoBehaviour
     {
         List<SafeZoneIsland> safeZoneIslands = new List<SafeZoneIsland>();
         // Init islands
-        safeZoneIslands.Add(new SafeZoneIsland(2,true,new Vector2(2,2)));
+        safeZoneIslands.Add(new SafeZoneIsland(2,true,new Vector2(0,0)));
         while (safeZoneIslands.Count < numberOfIslands)
         {
             expandSafeZones(safeZoneIslands);
@@ -76,7 +76,7 @@ public class generateMap : MonoBehaviour
                         int randomDist = Random.Range(2, 5);
                         bool randomVerticality = Random.Range(0, 2) == 1;
                         SafeZoneIsland newIsland = new SafeZoneIsland(randomSize, randomVerticality, getIslandNeighbourPosition(x, y, island, randomDist, randomSize, randomVerticality));
-                        if (isIslandSpawnable(newIsland, islandsToAdd, safeZoneIslands))
+                        if (isIslandSpawnable(newIsland, islandsToAdd, safeZoneIslands, island))
                         {
                             islandsToAdd.Add(newIsland);
                             islandsAdded++;
@@ -90,7 +90,7 @@ public class generateMap : MonoBehaviour
         safeZoneIslands.AddRange(islandsToAdd);
     }
 
-    private bool isIslandSpawnable(SafeZoneIsland newIsland, List<SafeZoneIsland> islandsToAdd, List<SafeZoneIsland> safeZoneIslands)
+    private bool isIslandSpawnable(SafeZoneIsland newIsland, List<SafeZoneIsland> islandsToAdd, List<SafeZoneIsland> safeZoneIslands, SafeZoneIsland motherIsland)
     {
         bool canSpawnIsland = true;
         
@@ -99,8 +99,10 @@ public class generateMap : MonoBehaviour
         concatList.AddRange(safeZoneIslands);
         foreach (var island in concatList) 
         {
-            if(!((island.originPoint-newIsland.originPoint).magnitude >= 7)) canSpawnIsland = false;
+            if (island.originPoint == motherIsland.originPoint) continue;
+            if(Mathf.Abs(island.originPoint.x-newIsland.originPoint.x) + Mathf.Abs(island.originPoint.y-newIsland.originPoint.y) < 6*tileSize) canSpawnIsland = false;
         }
+        Debug.Log(canSpawnIsland);
         return canSpawnIsland;
     }
 
