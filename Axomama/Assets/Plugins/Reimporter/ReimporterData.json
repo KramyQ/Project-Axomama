@@ -118,5 +118,10 @@
     "AssetName": "Tex_Grass_01",
     "OuterPath": "",
     "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Tex_Grass_01.png"
+  },
+  {
+    "AssetName": "Safezone_Tile_01",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Project_Axomama/Raw/Meshes/Environment/Safezone_Tile_01.fbx",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Safezone_Tile_01.fbx"
   }
 ]
