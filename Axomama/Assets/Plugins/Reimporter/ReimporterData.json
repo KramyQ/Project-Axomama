@@ -125,9 +125,14 @@
     "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Safezone_Tile_01.fbx"
   },
   {
-    "AssetName": "Safezone_03",
+    "AssetName": "Safezone_16",
     "OuterPath": "",
-    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Safezone_03.fbx"
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_16.fbx"
+  },
+  {
+    "AssetName": "Safezone_13",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_13.fbx"
   },
   {
     "AssetName": "Safezone_05",
@@ -150,6 +155,11 @@
     "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_08.fbx"
   },
   {
+    "AssetName": "Safezone_12",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_12.fbx"
+  },
+  {
     "AssetName": "Safezone_03",
     "OuterPath": "",
     "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_03.fbx"
@@ -163,11 +173,6 @@
     "AssetName": "Safezone_06",
     "OuterPath": "",
     "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_06.fbx"
-  },
-  {
-    "AssetName": "Safezone_02",
-    "OuterPath": "",
-    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_02.fbx"
   },
   {
     "AssetName": "Safezone_09",
