@@ -123,5 +123,10 @@
     "AssetName": "Safezone_Tile_01",
     "OuterPath": "C:/Users/etien/Documents/Projects/Project_Axomama/Raw/Meshes/Environment/Safezone_Tile_01.fbx",
     "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Safezone_Tile_01.fbx"
+  },
+  {
+    "AssetName": "Safezone_03",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Safezone_03.fbx"
   }
 ]
