@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Dev.Scripts;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class generateMap : MonoBehaviour
 {
@@ -22,6 +24,7 @@ public class generateMap : MonoBehaviour
     public void generate()
     {
         List<SafeZoneIsland> safeZoneIslands = createSafeZones();
+        // trimCantLink(safeZoneIslands);
         foreach (var island in safeZoneIslands)
         {
             Instantiate(tilePrefab, new Vector3(island.originPoint.x,0,island.originPoint.y), Quaternion.identity);
@@ -140,5 +143,42 @@ public class generateMap : MonoBehaviour
 
         return new Vector2(0, 0);
     }
+
+    private void trimCantLink(List<SafeZoneIsland> safeZoneIslands)
+    {
+        List<SafeZoneIsland> newlist = new List<SafeZoneIsland>();
+        newlist.AddRange(safeZoneIslands);
+        foreach (var islandSelected in safeZoneIslands)
+        {
+            int linkCounter = 0;
+            Vector2 bottomLeft = islandSelected.originPoint;
+            float height = islandSelected.vertical? 3:2;
+            float width = islandSelected.vertical? 2:3;
+            Vector2 topRight = new Vector2(islandSelected.originPoint.x + (width*tileSize), islandSelected.originPoint.y + (height*tileSize)) ;
+            foreach (var islandLinked in newlist)
+            {
+                if (linkCounter > 1) break;
+                Vector2 bottomLeftLinked = islandSelected.originPoint;
+                float heightLinked = islandSelected.vertical? 3:2;
+                float widthLinked = islandSelected.vertical? 2:3;
+                Vector2 topRightLinked = new Vector2(islandLinked.originPoint.x + (widthLinked*tileSize), islandLinked.originPoint.y + (heightLinked*tileSize));
+
+                // if (isLinkable(bottomLeft, topRight, bottomLeftLinked, topRightLinked))
+                // {
+                //     linkCounter++;
+                // }
+                
+            }
+            if (linkCounter > 1)
+            {
+                
+            }
+        }
+    }
+
+    // private bool isLinkable(Vector2 bottomLeft,  Vector2 topRight,  Vector2 bottomLeftLinked,  Vector2 topRightLinked)
+    // {
+    //     if bottomLeft.x < bottomLeftLinked.x && bottomLeft.x < bottomLeftLinked.x  
+    // }
 
 }
