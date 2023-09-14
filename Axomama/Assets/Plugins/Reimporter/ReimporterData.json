@@ -108,5 +108,75 @@
     "AssetName": "teFichier 1decal aim",
     "OuterPath": "",
     "InnerPath": "Assets/Dev/Character/Lasso/decalAimLasso.png"
+  },
+  {
+    "AssetName": "Safezone_01",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Project_Axomama/Raw/Meshes/Environment/Safezone_01.fbx",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Safezone_01.fbx"
+  },
+  {
+    "AssetName": "Tex_Grass_01",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Tex_Grass_01.png"
+  },
+  {
+    "AssetName": "Safezone_Tile_01",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Project_Axomama/Raw/Meshes/Environment/Safezone_Tile_01.fbx",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Safezone_Tile_01.fbx"
+  },
+  {
+    "AssetName": "Safezone_16",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_16.fbx"
+  },
+  {
+    "AssetName": "Safezone_13",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_13.fbx"
+  },
+  {
+    "AssetName": "Safezone_05",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_05.fbx"
+  },
+  {
+    "AssetName": "Safezone_01",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_01.fbx"
+  },
+  {
+    "AssetName": "Safezone_04",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_04.fbx"
+  },
+  {
+    "AssetName": "Safezone_08",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_08.fbx"
+  },
+  {
+    "AssetName": "Safezone_12",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_12.fbx"
+  },
+  {
+    "AssetName": "Safezone_03",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_03.fbx"
+  },
+  {
+    "AssetName": "Safezone_07",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_07.fbx"
+  },
+  {
+    "AssetName": "Safezone_06",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_06.fbx"
+  },
+  {
+    "AssetName": "Safezone_09",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_09.fbx"
   }
 ]
