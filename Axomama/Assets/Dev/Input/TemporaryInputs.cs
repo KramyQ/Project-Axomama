@@ -31,7 +31,7 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""7d3366d7-c921-4080-8a73-6ddb3c71b3b8"",
-                    ""expectedControlType"": ""Dpad"",
+                    ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true

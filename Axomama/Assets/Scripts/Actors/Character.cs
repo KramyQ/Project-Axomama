@@ -59,7 +59,7 @@ public class Character : MonoBehaviour
             GameObject interactableGameObject = interactable.GetInteractableGameObject();
             if (interactableGameObject.name == "Chest")
             {
-                DOVirtual.Float(1f, 1f, 0.5f, weight => {
+                DOVirtual.Float(1f, 0f, 0.5f, weight => {
                     animator.SetLayerWeight(1, weight);
                 });
                 animator.SetBool("IsHoldingChest", false);
