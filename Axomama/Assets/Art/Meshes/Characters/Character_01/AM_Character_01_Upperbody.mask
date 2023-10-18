@@ -11,14 +11,14 @@ AvatarMask:
   m_Elements:
   - m_Path: 
     m_Weight: 1
-  - m_Path: Character_01_Low
+  - m_Path: Character_01_Mesh
     m_Weight: 0
   - m_Path: root
     m_Weight: 0
   - m_Path: root/root.x
     m_Weight: 0
   - m_Path: root/root.x/spine_01.x
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: root/root.x/spine_01.x/spine_02.x
     m_Weight: 1
   - m_Path: root/root.x/spine_01.x/spine_02.x/neck.x
@@ -44,6 +44,8 @@ AvatarMask:
   - m_Path: root/root.x/spine_01.x/spine_02.x/shoulder.l/arm_stretch.l/forearm_stretch.l/hand.l/index1_base.l/index1.l/index2.l
     m_Weight: 1
   - m_Path: root/root.x/spine_01.x/spine_02.x/shoulder.l/arm_stretch.l/forearm_stretch.l/hand.l/index1_base.l/index1.l/index2.l/index3.l
+    m_Weight: 1
+  - m_Path: root/root.x/spine_01.x/spine_02.x/shoulder.l/arm_stretch.l/forearm_stretch.l/hand.l/item.l
     m_Weight: 1
   - m_Path: root/root.x/spine_01.x/spine_02.x/shoulder.l/arm_stretch.l/forearm_stretch.l/hand.l/middle1_base.l
     m_Weight: 1
@@ -94,6 +96,8 @@ AvatarMask:
   - m_Path: root/root.x/spine_01.x/spine_02.x/shoulder.r/arm_stretch.r/forearm_stretch.r/hand.r/index1_base.r/index1.r/index2.r
     m_Weight: 1
   - m_Path: root/root.x/spine_01.x/spine_02.x/shoulder.r/arm_stretch.r/forearm_stretch.r/hand.r/index1_base.r/index1.r/index2.r/index3.r
+    m_Weight: 1
+  - m_Path: root/root.x/spine_01.x/spine_02.x/shoulder.r/arm_stretch.r/forearm_stretch.r/hand.r/item.r
     m_Weight: 1
   - m_Path: root/root.x/spine_01.x/spine_02.x/shoulder.r/arm_stretch.r/forearm_stretch.r/hand.r/middle1_base.r
     m_Weight: 1

@@ -71,6 +71,15 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""e45899fe-6b67-437c-a4b2-bd1889d34804"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -260,6 +269,28 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
                     ""action"": ""AimLasso"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd5f2e14-619b-4141-9862-352a8bce05e8"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8fc225ef-07be-4410-a88b-210b9f605717"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -273,6 +304,7 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
         m_PlayerMovement_LassoThrow = m_PlayerMovement.FindAction("LassoThrow", throwIfNotFound: true);
         m_PlayerMovement_LassoTest = m_PlayerMovement.FindAction("LassoTest", throwIfNotFound: true);
         m_PlayerMovement_AimLasso = m_PlayerMovement.FindAction("AimLasso", throwIfNotFound: true);
+        m_PlayerMovement_Interact = m_PlayerMovement.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -339,6 +371,7 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_LassoThrow;
     private readonly InputAction m_PlayerMovement_LassoTest;
     private readonly InputAction m_PlayerMovement_AimLasso;
+    private readonly InputAction m_PlayerMovement_Interact;
     public struct PlayerMovementActions
     {
         private @TemporaryInputs m_Wrapper;
@@ -348,6 +381,7 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
         public InputAction @LassoThrow => m_Wrapper.m_PlayerMovement_LassoThrow;
         public InputAction @LassoTest => m_Wrapper.m_PlayerMovement_LassoTest;
         public InputAction @AimLasso => m_Wrapper.m_PlayerMovement_AimLasso;
+        public InputAction @Interact => m_Wrapper.m_PlayerMovement_Interact;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -372,6 +406,9 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
             @AimLasso.started += instance.OnAimLasso;
             @AimLasso.performed += instance.OnAimLasso;
             @AimLasso.canceled += instance.OnAimLasso;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IPlayerMovementActions instance)
@@ -391,6 +428,9 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
             @AimLasso.started -= instance.OnAimLasso;
             @AimLasso.performed -= instance.OnAimLasso;
             @AimLasso.canceled -= instance.OnAimLasso;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IPlayerMovementActions instance)
@@ -415,5 +455,6 @@ public partial class @TemporaryInputs: IInputActionCollection2, IDisposable
         void OnLassoThrow(InputAction.CallbackContext context);
         void OnLassoTest(InputAction.CallbackContext context);
         void OnAimLasso(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

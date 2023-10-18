@@ -626,6 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 8347270908764603582}
+  cameraHolderTransform: {fileID: 0}
   cameraTransform: {fileID: 4455249676683025224}
   shadowTransform: {fileID: 1577683571934785441}
   characterLayerMask:
@@ -636,7 +637,7 @@ MonoBehaviour:
     type: 2}
   noFrictionPhysicMaterial: {fileID: 13400000, guid: 74653d3f105371c489c37f2c2d60bb10,
     type: 2}
-  maxWalkSpeed: 10
+  maxWalkSpeed: 12
   maxAcceleration: 50
   accelerationFactorFromVelocityDotCurve:
     serializedVersion: 2

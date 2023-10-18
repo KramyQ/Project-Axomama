@@ -178,5 +178,20 @@
     "AssetName": "Safezone_09",
     "OuterPath": "",
     "InnerPath": "Assets/Art/Meshes/Envionment/Safezones/Blocking/Safezone_09.fbx"
+  },
+  {
+    "AssetName": "Chest_01",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Project_Jones/Project_Jones_Unity/project-jones-unity/Project_Jones/Assets/Game/Art/Meshes/Items/Chest_01.fbx",
+    "InnerPath": "Assets/Art/Meshes/Items/Chest_01.fbx"
+  },
+  {
+    "AssetName": "Character_01_Chest_Idle",
+    "OuterPath": "",
+    "InnerPath": "Assets/Art/Meshes/Characters/Character_01/Animations/Character_01_Chest_Idle.fbx"
+  },
+  {
+    "AssetName": "Character_01",
+    "OuterPath": "C:/Users/etien/Documents/Projects/Gamedev/Characters/Axomama/Character_01.fbx",
+    "InnerPath": "Assets/Art/Meshes/Characters/Character_01/Character_01.fbx"
   }
 ]
