@@ -3,15 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using ActorComponents;
 using DG.Tweening;
+using Managers;
 using UnityEngine;
 using UnityEngine.Animations;
 
 public class Character : MonoBehaviour
 {
+    public int characterId = 0;
     public InteractorComponent interactorComponent;
+    public HealthComponent healthComponent;
     public Animator animator;
     public Transform itemHolderRightTransform;
     public Transform itemHolderLeftTransform;
+    public GameObject meshGameObject;
     
     private TemporaryInputs m_playerInputActions;
     
@@ -34,6 +38,7 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
+        // Interactor
         interactorComponent.onInteractableStartInteract.AddListener(interactable =>
         {
             GameObject interactableGameObject = interactable.GetInteractableGameObject();
@@ -68,6 +73,17 @@ public class Character : MonoBehaviour
                 if (parentConstraint)
                     Destroy(parentConstraint);
             }
+        });
+        
+        // Health 
+        healthComponent.onDie.AddListener(() =>
+        {
+            GameManager.Instance.NotifyCharacterDeath(this);
+            meshGameObject.SetActive(false);
+        });
+        healthComponent.onSpawn.AddListener(() =>
+        {
+            meshGameObject.SetActive(true);
         });
     }
 }

@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 372929628879763445}
   - component: {fileID: 1353098826301704478}
   - component: {fileID: 5901410097599024815}
+  - component: {fileID: 5588718404774034355}
   m_Layer: 6
   m_Name: V3NetworkCharacter 1
   m_TagString: Untagged
@@ -412,10 +413,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001586e672cd6e04cae41c36543c3a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterId: 0
   interactorComponent: {fileID: 5901410097599024815}
+  healthComponent: {fileID: 5588718404774034355}
   animator: {fileID: 958449220029347987}
   itemHolderRightTransform: {fileID: 3309082499255792546}
   itemHolderLeftTransform: {fileID: 7267641813239332649}
+  meshGameObject: {fileID: 7545297317462262187}
 --- !u!114 &5901410097599024815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +439,24 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onInteractableStopInteract:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5588718404774034355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659536212891205084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b8e68f3ddb4967b84fef4b615800b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
+  onSpawn:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &7299075481216001352
