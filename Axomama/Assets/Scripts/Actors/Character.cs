@@ -16,6 +16,7 @@ public class Character : MonoBehaviour
     public Transform itemHolderRightTransform;
     public Transform itemHolderLeftTransform;
     public GameObject meshGameObject;
+    public new Rigidbody rigidbody;
     
     private TemporaryInputs m_playerInputActions;
     
@@ -80,10 +81,12 @@ public class Character : MonoBehaviour
         {
             GameManager.Instance.NotifyCharacterDeath(this);
             meshGameObject.SetActive(false);
+            rigidbody.isKinematic = true;
         });
         healthComponent.onSpawn.AddListener(() =>
         {
             meshGameObject.SetActive(true);
+            rigidbody.isKinematic = false;
         });
     }
 }
